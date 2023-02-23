@@ -4,9 +4,6 @@ import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 import axios from "axios";
-import { v4 as uuidv4, v6 as uuidv6 } from 'uuid';
-
-console.log("uuid:", uuidv4());
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -24,16 +21,12 @@ function App() {
       Add a note to DB and update state
     */
   function addNote(newNote) {
-    console.log(notes)
-
     axios.post("https://graceful-tan-barnacle.cyclic.app/api/note/add", newNote)
       .then((res) => setNotes([...notes, res.data]))
       .catch((err) => console.log(err));
   }
 
   function deleteNote(id) {
-    console.log("deleteNote()")
-    console.log("localhost")
     axios.post("https://graceful-tan-barnacle.cyclic.app/api/note/delete", { noteId: id })
       .catch((err) => console.log(err));
 
