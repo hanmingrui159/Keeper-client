@@ -12,25 +12,16 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   /*
-    Fetch all People the moment this App component loads for the first time
-    Notes: The proxy enables us to use axios without the full url http://localhost:4747/api/people
-           The empty array [] parameter ensures that the code inside useEffect() runs once
+    Fetch all Notes the moment this App component loads for the first time
   */
   useEffect(() => {
     axios.get("https://graceful-tan-barnacle.cyclic.app/api/notes")
-      .then((res) => {setNotes(res.data);})
+      .then((res) => { setNotes(res.data); })
       .catch((err) => console.error(err));
   }, []);
 
-  // function addNote(newNote) {
-  //   setNotes(prevNotes => {
-  //     return [...prevNotes, newNote];
-  //   });
-  // }
-
   /*
-      Add a person to DB and update state
-      Notes: The proxy enables us to use axios without the full url http://localhost:4747/api/person/add
+      Add a note to DB and update state
     */
   function addNote(newNote) {
     console.log(notes)
@@ -43,7 +34,7 @@ function App() {
   function deleteNote(id) {
     console.log("deleteNote()")
     console.log("localhost")
-    axios.post("https://graceful-tan-barnacle.cyclic.app/api/note/delete", {noteId:id})
+    axios.post("https://graceful-tan-barnacle.cyclic.app/api/note/delete", { noteId: id })
       .catch((err) => console.log(err));
 
     setNotes(prevNotes => {
