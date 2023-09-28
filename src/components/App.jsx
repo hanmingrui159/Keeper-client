@@ -8,11 +8,14 @@ import axios from "axios";
 function App() {
   const [notes, setNotes] = useState([]);
 
+  apiUrl = "https://spotless-rose-beaver.cyclic.cloud" 
+
   /*
     Fetch all Notes the moment this App component loads for the first time
   */
   useEffect(() => {
-    axios.get("https://hilarious-pink-antelope.cyclic.cloud/api/notes")
+    apiEndPoint = apiUrl + "/api/notes"
+    axios.get(apiEndPoint)
       .then((res) => { setNotes(res.data); })
       .catch((err) => console.error(err));
   }, []);
