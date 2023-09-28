@@ -21,13 +21,13 @@ function App() {
       Add a note to DB and update state
     */
   function addNote(newNote) {
-    axios.post("https://graceful-tan-barnacle.cyclic.app/api/note/add", newNote)
+    axios.post("https://hilarious-pink-antelope.cyclic.cloud/api/note/add", newNote)
       .then((res) => setNotes([...notes, res.data]))
       .catch((err) => console.log(err));
   }
 
   function deleteNote(id) {
-    axios.post("https://graceful-tan-barnacle.cyclic.app/api/note/delete", { noteId: id })
+    axios.post("https://hilarious-pink-antelope.cyclic.cloud/api/note/delete", { noteId: id })
       .catch((err) => console.log(err));
 
     setNotes(prevNotes => {
