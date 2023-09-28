@@ -8,13 +8,13 @@ import axios from "axios";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  const apiUrl = "https://spotless-rose-beaver.cyclic.cloud" 
+  const apiUrl = "https://spotless-rose-beaver.cyclic.cloud/api" 
 
   /*
     Fetch all Notes the moment this App component loads for the first time
   */
   useEffect(() => {
-    const apiEndPoint = apiUrl + "/api/notes"
+    const apiEndPoint = apiUrl + "/notes"
     axios.get(apiEndPoint)
       .then((res) => { setNotes(res.data); })
       .catch((err) => console.error(err));
@@ -24,13 +24,15 @@ function App() {
       Add a note to DB and update state
     */
   function addNote(newNote) {
-    axios.post("https://hilarious-pink-antelope.cyclic.cloud/api/note/add", newNote)
+    const apiEndPoint = apiUrl + "/note/add"
+    axios.post(apiEndPoint, newNote)
       .then((res) => setNotes([...notes, res.data]))
       .catch((err) => console.log(err));
   }
 
   function deleteNote(id) {
-    axios.post("https://hilarious-pink-antelope.cyclic.cloud/api/note/delete", { noteId: id })
+    const apiEndPoint = apiUrl + "/note/delete"
+    axios.post(apiEndPoint, { noteId: id })
       .catch((err) => console.log(err));
 
     setNotes(prevNotes => {
