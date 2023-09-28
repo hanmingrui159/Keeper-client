@@ -12,7 +12,7 @@ function App() {
     Fetch all Notes the moment this App component loads for the first time
   */
   useEffect(() => {
-    axios.get("https://graceful-tan-barnacle.cyclic.app/api/notes")
+    axios.get("https://hilarious-pink-antelope.cyclic.cloud/api/notes")
       .then((res) => { setNotes(res.data); })
       .catch((err) => console.error(err));
   }, []);
